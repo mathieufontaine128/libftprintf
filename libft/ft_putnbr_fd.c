@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 14:45:45 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/18 15:58:37 by mfontain         ###   ########.fr       */
+/*   Created: 2025/11/08 23:55:22 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/09 11:20:46 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef LIBFTPRINTF_H 
-#define LIBFTPRINT_H
+#include "libft.h"
 
-#include <stdlib.h>
-#include <unistd.h>
-#include ""
-
-int libftprintf(char *,...);
-
-#endif
-
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+	}
+	ft_putchar_fd(n % 10 + '0', fd);
+}

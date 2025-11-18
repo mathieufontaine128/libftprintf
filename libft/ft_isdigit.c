@@ -1,22 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 14:45:45 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/18 15:58:37 by mfontain         ###   ########.fr       */
+/*   Created: 2025/10/21 18:07:23 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/13 19:26:30 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef LIBFTPRINTF_H 
-#define LIBFTPRINT_H
-
-#include <stdlib.h>
-#include <unistd.h>
-#include ""
-
-int libftprintf(char *,...);
-
-#endif
-
+int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}

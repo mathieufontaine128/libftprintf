@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 14:45:45 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/18 15:58:37 by mfontain         ###   ########.fr       */
+/*   Created: 2025/11/08 18:44:32 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/14 01:34:11 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef LIBFTPRINTF_H 
-#define LIBFTPRINT_H
+#include "libft.h"
 
-#include <stdlib.h>
-#include <unistd.h>
-#include ""
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	int		len;
+	int		i;
+	char	*str;
 
-int libftprintf(char *,...);
-
-#endif
-
+	if (!(s) || !(f))
+		return (NULL);
+	len = ft_strlen(s) + 1;
+	str = (char *)malloc(sizeof(char) * len);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

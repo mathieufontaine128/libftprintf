@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 14:45:45 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/18 15:58:37 by mfontain         ###   ########.fr       */
+/*   Created: 2025/11/03 13:51:02 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/13 20:47:40 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef LIBFTPRINTF_H 
-#define LIBFTPRINT_H
+#include "libft.h"
 
-#include <stdlib.h>
-#include <unistd.h>
-#include ""
+char	*ft_strchr(const char *s, int c)
+{
+	size_t	i;
 
-int libftprintf(char *,...);
-
-#endif
-
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
+	return (NULL);
+}

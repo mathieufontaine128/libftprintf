@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 14:45:45 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/18 15:58:37 by mfontain         ###   ########.fr       */
+/*   Created: 2025/11/03 14:05:23 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/13 21:21:55 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef LIBFTPRINTF_H 
-#define LIBFTPRINT_H
+int	ft_atoi(const char *nptr)
+{
+	int	i;
+	int	n;
+	int	sign;
 
-#include <stdlib.h>
-#include <unistd.h>
-#include ""
-
-int libftprintf(char *,...);
-
-#endif
-
+	i = 0;
+	n = 0;
+	sign = 1;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		n = n * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (n * sign);
+}

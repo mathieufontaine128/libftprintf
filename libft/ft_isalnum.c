@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 14:45:45 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/18 15:58:37 by mfontain         ###   ########.fr       */
+/*   Created: 2025/10/21 18:05:49 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/11 17:35:50 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef LIBFTPRINTF_H 
-#define LIBFTPRINT_H
+#include "libft.h"
 
-#include <stdlib.h>
-#include <unistd.h>
-#include ""
-
-int libftprintf(char *,...);
-
-#endif
-
+int	ft_isalnum(int c)
+{
+	return (ft_isalpha(c) || ft_isdigit(c));
+}

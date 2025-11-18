@@ -1,22 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 14:45:45 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/18 15:58:37 by mfontain         ###   ########.fr       */
+/*   Created: 2025/10/21 18:06:40 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/11 16:05:50 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef LIBFTPRINTF_H 
-#define LIBFTPRINT_H
-
-#include <stdlib.h>
-#include <unistd.h>
-#include ""
-
-int libftprintf(char *,...);
-
-#endif
-
+int	ft_isalpha(int c)
+{
+	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
+}

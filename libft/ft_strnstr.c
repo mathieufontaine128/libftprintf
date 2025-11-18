@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 14:45:45 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/18 15:58:37 by mfontain         ###   ########.fr       */
+/*   Created: 2025/11/03 14:04:38 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/14 17:43:50 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef LIBFTPRINTF_H 
-#define LIBFTPRINT_H
+#include "libft.h"
 
-#include <stdlib.h>
-#include <unistd.h>
-#include ""
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	size_t	i;
+	size_t	j;
 
-int libftprintf(char *,...);
-
-#endif
-
+	if (!big || !little)
+		return (NULL);
+	if (*little == '\0')
+		return ((char *)big);
+	i = 0;
+	while (big[i] && i < len)
+	{
+		j = 0;
+		while (i + j < len && little[j] && big[i + j] == little[j])
+			j++;
+		if (little[j] == '\0')
+			return ((char *)&big[i]);
+		i++;
+	}
+	return (NULL);
+}

@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 14:45:45 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/18 15:58:37 by mfontain         ###   ########.fr       */
+/*   Created: 2025/10/27 10:39:28 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/18 15:26:17 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef LIBFTPRINTF_H 
-#define LIBFTPRINT_H
+#include "libft.h"
 
-#include <stdlib.h>
-#include <unistd.h>
-#include ""
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	src_len;
 
-int libftprintf(char *,...);
-
-#endif
-
+	if (!dest || !src)
+		return(0);
+	src_len = ft_strlen(src);
+	if (size == 0)
+		return (src_len);
+	i = 0;
+	while (i < size - 1 && src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (src_len);
+}
