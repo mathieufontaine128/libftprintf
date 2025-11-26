@@ -6,7 +6,7 @@
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 10:39:28 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/18 15:26:17 by mfontain         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:58:07 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -17,7 +17,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	size_t	src_len;
 
 	if (!dest || !src)
-		return(0);
+		return (0);
 	src_len = ft_strlen(src);
 	if (size == 0)
 		return (src_len);

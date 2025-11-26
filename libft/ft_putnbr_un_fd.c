@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_un_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 09:01:32 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/26 17:57:34 by mfontain         ###   ########.fr       */
+/*   Created: 2025/11/08 23:55:22 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/26 17:59:35 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_putnbr_un_fd(unsigned int n, int fd)
 {
-	unsigned char	*d;
-	unsigned char	*s;
+	int	len;
 
-	if (!dest || !src)
-		return (NULL);
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (d < s)
+	len = 0;
+	if (n > 9)
 	{
-		while (n--)
-			*d++ = *s++;
+		len += ft_putnbr_un_fd(n / 10, fd);
 	}
-	else
-	{
-		d += n;
-		s += n;
-		while (n--)
-			*--d = *--s;
-	}
-	return (dest);
+	len += ft_putchar_fd(n % 10 + '0', fd);
+	return (len);
 }

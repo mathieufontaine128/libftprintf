@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd_handler.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 09:01:32 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/26 17:57:34 by mfontain         ###   ########.fr       */
+/*   Created: 2025/11/21 15:52:18 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/24 14:45:50 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include <libftprintf.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_putnbr_fd_handler(va_list args)
 {
-	unsigned char	*d;
-	unsigned char	*s;
+	int	nbr;
+	int	len;
 
-	if (!dest || !src)
-		return (NULL);
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (d < s)
-	{
-		while (n--)
-			*d++ = *s++;
-	}
-	else
-	{
-		d += n;
-		s += n;
-		while (n--)
-			*--d = *--s;
-	}
-	return (dest);
+	nbr = va_arg(args, int);
+	len = ft_putnbr_fd(nbr, 1);
+	return (len);
 }

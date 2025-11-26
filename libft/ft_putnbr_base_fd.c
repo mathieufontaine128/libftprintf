@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_base_fd.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 09:01:32 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/26 17:57:34 by mfontain         ###   ########.fr       */
+/*   Created: 2025/11/25 21:10:43 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/26 19:51:00 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_putnbr_base_fd(unsigned long nbr, const char *base, int fd)
 {
-	unsigned char	*d;
-	unsigned char	*s;
+	int	base_len;
+	int	len;
 
-	if (!dest || !src)
-		return (NULL);
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (d < s)
-	{
-		while (n--)
-			*d++ = *s++;
-	}
-	else
-	{
-		d += n;
-		s += n;
-		while (n--)
-			*--d = *--s;
-	}
-	return (dest);
+	base_len = 0;
+	while (base[base_len])
+		base_len++;
+	len = 0;
+	if (nbr >= (unsigned long)base_len)
+		len += ft_putnbr_base_fd(nbr / base_len, base, fd);
+	write(fd, &base[nbr % base_len], 1);
+	return (len + 1);
 }
+/*int main(void)
+{
+	ft_putnbr_base_fd(257, "0123456789abcdef", 1);
+}*/
