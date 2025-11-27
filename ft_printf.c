@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_un_fd_handler.c                          :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/21 15:52:18 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/27 22:30:24 by mfontain         ###   ########.fr       */
+/*   Created: 2025/11/27 21:55:14 by mfontain          #+#    #+#             */
+/*   Updated: 2025/11/27 21:55:31 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <ft_printf.h>
+#include "ft_printf.h"
 
-int	ft_putnbr_un_fd_handler(va_list args)
+int	ft_printf(const char *format, ...)
 {
-	unsigned int	nbr;
-	int			len;
+	va_list args;
+	int	len;
 
-	nbr = va_arg(args, unsigned int);
-	len = ft_putnbr_un_fd(nbr, 1);
+	len = 0;
+	va_start(args, format);
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			if (*format == '%')
+				len += ft_putchar_fd('%', 1);
+			else
+				len += ft_printer(args, *format);
+		}
+		else
+			len += ft_putchar_fd(*format, 1);
+		format++;
+	}	
+	va_end(args);
 	return (len);
 }

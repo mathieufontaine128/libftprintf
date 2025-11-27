@@ -1,15 +1,15 @@
 /* ************************************************************************** */
 /*                                                                           */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.c                                      :+:      :+:    :+:   */
+/*   ft_printer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 14:45:28 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/24 14:53:57 by mfontain         ###   ########.fr       */
+/*   Updated: 2025/11/27 21:58:19 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 FormatHandler handlers[]=
 {
@@ -18,34 +18,21 @@ FormatHandler handlers[]=
 	{'d', ft_putnbr_fd_handler},
 	{'i', ft_putnbr_fd_handler},		
 	{'u', ft_putnbr_un_fd_handler},
-	//{'p', ft_print_vpointer},
+	{'p', ft_putptr_fd_handler},
+	{'x', ft_puthex_low_fd_handler},
+	{'X', ft_puthex_upp_fd_handler},
 	{0, NULL}
 };
-int	ft_printf(const char *form, ...)
+int	ft_printer(va_list args, char format_char)
 {
-	va_list args;
-	va_start(args, form);
-	int	len;
 	int	i;
 
-	len = 0;
-	while (*form)
+	i = 0;
+	while (handlers[i].format_char)
 	{
-		if (*form == '%')
-		{
-			form++;
-			i = 0;
-			while (handlers[i].format_char)
-			{
-				if (handlers[i].format_char == *form)
-					len += handlers[i].convert_func(args);
-				i++;
-			}
-		}
-		else 
-			len += ft_putchar_fd(*form, 1);
-		form++;
+		if (handlers[i].format_char == format_char)
+			return (handlers[i].convert_func(args));
+		i++;
 	}
-	va_end(args);
-	return (len);
+	return (0);
 }

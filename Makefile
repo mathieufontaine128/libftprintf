@@ -6,18 +6,19 @@
 #    By: mfontain <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/18 19:12:14 by mfontain          #+#    #+#              #
-#    Updated: 2025/11/24 14:56:00 by mfontain         ###   ########.fr        #
+#    Updated: 2025/11/27 22:18:11 by mfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS =	libftprintf.c ft_putchar_fd_handler.c ft_putstr_fd_handler.c \
-	ft_putnbr_fd_handler.c ft_putnbr_un_fd_handler.c 
+SRCS =	ft_printf.c ft_putchar_fd_handler.c ft_putstr_fd_handler.c \
+	ft_putnbr_fd_handler.c ft_putnbr_un_fd_handler.c ft_puthex_low_fd_handler.c \
+	ft_puthex_upp_fd_handler.c ft_putptr_fd_handler.c ft_printer.c 
 
 OBJS	= $(SRCS:.c=.o)
 
-HEADERS	= libftprintf.h
+HEADERS	= ft_printf.h
 
 INCLUDES = -I. -Ilibft
 
@@ -34,6 +35,9 @@ $(LIBFT):
 
 $(NAME):	$(OBJS) $(LIBFT)
 		ar rcs $(NAME) $(OBJS)
+		ar x $(LIBFT)
+		ar rcs $(NAME) *.o
+		make -C libft clean
 
 %.o: %.c	$(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
