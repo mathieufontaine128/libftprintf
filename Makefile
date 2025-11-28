@@ -6,50 +6,38 @@
 #    By: mfontain <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/18 19:12:14 by mfontain          #+#    #+#              #
-#    Updated: 2025/11/27 22:18:11 by mfontain         ###   ########.fr        #
+#    Updated: 2025/11/28 10:34:36 by mfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS =	ft_printf.c ft_putchar_fd_handler.c ft_putstr_fd_handler.c \
+SRCS =	ft_printf.c ft_printer.c ft_putchar_fd_handler.c ft_putstr_fd_handler.c \
 	ft_putnbr_fd_handler.c ft_putnbr_un_fd_handler.c ft_puthex_low_fd_handler.c \
-	ft_puthex_upp_fd_handler.c ft_putptr_fd_handler.c ft_printer.c 
+	ft_puthex_upp_fd_handler.c ft_putptr_fd_handler.c ft_putchar_fd.c \
+	ft_putnbr_base_fd.c ft_putnbr_fd.c ft_putnbr_un_fd.c ft_putptr_fd.c \
+	ft_putstr_fd.c ft_strlen.c 
 
 OBJS	= $(SRCS:.c=.o)
-
 HEADERS	= ft_printf.h
 
-INCLUDES = -I. -Ilibft
-
 CC	= cc
-CFLAGS	= -Wall -Wextra -Werror $(INCLUDES)
+CFLAGS	= -Wall -Wextra -Werror -I.
 RM	= rm -f
 
-LIBFT =	libft/libft.a
+all:	$(NAME)
 
-all:	$(LIBFT) $(NAME)
-
-$(LIBFT):
-	make -C libft
-
-$(NAME):	$(OBJS) $(LIBFT)
+$(NAME):	$(OBJS)
 		ar rcs $(NAME) $(OBJS)
-		ar x $(LIBFT)
-		ar rcs $(NAME) *.o
-		make -C libft clean
-
-%.o: %.c	$(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
+	
+$(OBJS):	$(HEADERS)
 
 clean:
-	$(RM) $(OBJS)
-	make -C libft clean
+		$(RM) $(OBJS)
 
-fclean: clean
-	$(RM) $(NAME)
-	make -C libft fclean
+fclean: 	clean
+		$(RM) $(NAME)
 
-re:		fclean all
+re:		fclean $(NAME)
 
 .PHONY:		all clean fclean re
