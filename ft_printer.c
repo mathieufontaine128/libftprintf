@@ -6,10 +6,16 @@
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 14:45:28 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/27 21:58:19 by mfontain         ###   ########.fr       */
+/*   Updated: 2025/11/28 09:06:36 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+
+/*typedef struct
+{
+        char    format_char;
+        int     (*convert_func)(va_list args);
+} FormatHandler;
 
 FormatHandler handlers[]=
 {
@@ -35,4 +41,22 @@ int	ft_printer(va_list args, char format_char)
 		i++;
 	}
 	return (0);
+}*/
+
+int	ft_printer(va_list args, char format_char)
+{
+	if	(format_char == 'c')
+		return (ft_putchar_fd_handler(args, 1));
+	else if	(format_char == 's')
+		return (ft_putstr_fd_handler(args, 1));
+	else if	(format_char == 'd' || format_char == 'i')
+		return (ft_putnbr_fd_handler(args, 1));
+	else if	(format_char == 'u')
+		return (ft_putnbr_un_fd_handler(args, 1));
+	else if	(format_char == 'p')
+		return (ft_putptr_fd_handler(args, 1));
+	else if	(format_char == 'x')
+		return (ft_puthex_low_fd_handler(args, 1));
+	else if	(format_char == 'X')
+		return (ft_puthex_upp_fd_handler(args, 1));
 }
