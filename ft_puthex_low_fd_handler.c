@@ -6,7 +6,7 @@
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 16:24:03 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/27 22:32:45 by mfontain         ###   ########.fr       */
+/*   Updated: 2025/11/28 11:06:35 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -14,7 +14,7 @@
 int	ft_puthex_low_fd_handler(va_list args)
 {
 	unsigned int	nbr;
-	int		len;
+	int				len;
 
 	nbr = va_arg(args, unsigned int);
 	len = ft_putnbr_base_fd(nbr, "0123456789abcdef", 1);

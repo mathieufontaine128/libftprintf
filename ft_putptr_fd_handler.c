@@ -6,7 +6,7 @@
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 18:08:48 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/27 22:02:09 by mfontain         ###   ########.fr       */
+/*   Updated: 2025/11/28 11:15:49 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -14,10 +14,10 @@
 int	ft_putptr_fd_handler(va_list args)
 {
 	void	*ptr;
-	int	len;
+	int		len;
 
-	ptr = va_arg(args, void*);
-	len  = ft_putptr_fd(ptr, 1);
+	ptr = va_arg(args, void *);
+	len = ft_putptr_fd(ptr, 1);
 	return (len);
 }
 /*#include <stdio.h>
