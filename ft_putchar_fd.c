@@ -6,7 +6,7 @@
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 23:29:32 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/28 10:29:47 by mfontain         ###   ########.fr       */
+/*   Updated: 2025/11/30 08:53:58 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -16,3 +16,13 @@ int	ft_putchar_fd(char c, int fd)
 	write(fd, &c, 1);
 	return (1);
 }
+/*int	main(void)
+{	
+	int	i = 0;	
+	
+	while (i <= 127 )
+	{
+		ft_putchar_fd(i, 1);
+		i++;
+	}
+}*/

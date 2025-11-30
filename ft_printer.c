@@ -6,7 +6,7 @@
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 14:45:28 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/28 11:20:10 by mfontain         ###   ########.fr       */
+/*   Updated: 2025/11/30 11:38:29 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -29,3 +29,36 @@ int	ft_printer(va_list args, char format_char)
 		return (ft_puthex_upp_fd_handler(args));
 	return (0);
 }
+/*int	test_printer(int format_char, ...)
+{
+	va_list	args;
+	int	result;
+	va_start(args, format_char);
+	result = ft_printer(args, format_char);
+	va_end(args);
+	ft_printf("    test '%c' %d\n", format_char, result);
+	return (result);
+}
+int	main(void)
+{
+	int	val = 42;
+
+	test_printer('c', 'A');
+	
+	test_printer('s', "Hello World");
+
+	test_printer('d', -42);
+
+	test_printer('i', -42);
+	
+	test_printer('u', 42);
+	
+	test_printer('p', &val);
+	
+	test_printer('x', 255);
+	
+	test_printer('X', 255);
+
+	return (0);
+
+}*/
