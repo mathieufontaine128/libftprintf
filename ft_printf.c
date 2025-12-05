@@ -6,7 +6,7 @@
 /*   By: mfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 21:55:14 by mfontain          #+#    #+#             */
-/*   Updated: 2025/11/30 15:10:47 by mfontain         ###   ########.fr       */
+/*   Updated: 2025/12/05 06:51:37 by mfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -18,6 +18,8 @@ int	ft_printf(const char *format, ...)
 
 	len = 0;
 	va_start(args, format);
+	if (!format)
+		return (-1);
 	while (*format)
 	{
 		if (*format == '%')
